@@ -1,11 +1,5 @@
 #include "protocol.h"
 
-route_update* create_route_update(route_update* update, node_id_t target_id, uint8_t hops) {
-    update->type = ROUTE_UPDATE;
-    update->target_id = target_id;
-    update->hops = hops;
-}
-
 void create_join_request(join_request* req) {
     req->type = JOIN_REQUEST;
     return req;

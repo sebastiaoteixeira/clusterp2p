@@ -15,6 +15,7 @@ static char args_doc[] = "";
 static struct argp_option options[] = {
     { "host", 'h', "HOST", 0, "Host to listen on" },
     { "port", 'p', "PORT", 0, "Port to listen on" },
+    { "id", 'i', "ID", 0, "Node ID" },
     { "connect", 'c', "TO", 0, "Nodes to connect to" },
     { "max-connections", 'm', "MAX_CONNECTIONS", 0, "Maximum number of connections" },
     { "log-file", 'l', "LOG_FILE", 0, "Log file" },
@@ -25,6 +26,7 @@ static struct argp_option options[] = {
 struct arguments {
     char *host;
     int port;
+    node_id_t id;
     char *connect;
     int max_connections;
     char *log_file;
@@ -40,6 +42,9 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
             break;
         case 'p':
             arguments->port = atoi(arg);
+            break;
+        case 'i':
+            arguments->id = atoi(arg);
             break;
         case 'c':
             arguments->connect = arg;

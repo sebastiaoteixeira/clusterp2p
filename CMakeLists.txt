@@ -12,24 +12,32 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
 # Lista de fontes para a biblioteca
-set(CLUSTERP2P_LIB_SOURCES
-    src/network/node.c
-    src/identity.c
-    src/shared.c
-    src/utils.c
-    src/logger.c
-)
+# set(CLUSTERP2P_LIB_SOURCES
+#     src/network/node.c
+#     src/identity.c
+#     src/shared.c
+#     src/utils.c
+#     src/logger.c
+# )
 
 # Cria a biblioteca compartilhada libclusterp2p.so
-add_library(libclusterp2p SHARED ${CLUSTERP2P_LIB_SOURCES})
+# add_library(clusterapi SHARED ${CLUSTERP2P_LIB_SOURCES})
 
-# Lista de fontes para o executável
-set(CLUSTERP2P_EXEC_SOURCES
-    src/network/node_listener.c
+set(CLUSTERP2P_ROUTER_EXEC_SOURCES
+    src/network/router/router.c
+    src/network/router/routing_table.c
 )
 
+add_executable(router ${CLUSTERP2P_ROUTER_EXEC_SOURCES})
+
+# Lista de fontes para o executável
+# set(CLUSTERP2P_EXEC_SOURCES
+#     src/network/node_listener.c
+# )
+
 # Cria o executável clusterp2p
-add_executable(clusterp2p ${CLUSTERP2P_EXEC_SOURCES})
+# add_executable(clusterp2p ${CLUSTERP2P_EXEC_SOURCES})
+
 
 # Linka a biblioteca clusterp2p com o executável clusterp2p
-target_link_libraries(clusterp2p libclusterp2p)
+# target_link_libraries(clusterp2p clusterapi)

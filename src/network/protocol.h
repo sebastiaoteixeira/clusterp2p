@@ -14,13 +14,6 @@ typedef enum {
     JOIN_ACCEPT = 3,
 } msg_type;
 
-// ROUTE_UPDATE
-typedef struct {
-    msg_type type; // Type = 0
-    node_id_t target_id;
-    uint8_t hops;
-} route_update;
-
 // JOIN_REQUEST
 typedef struct {
     msg_type type; // Type = 1
